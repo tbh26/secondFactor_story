@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js presentation</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+<!--		<link rel="stylesheet" href="dist/theme/black.css">-->
+		<link rel="stylesheet" href="dist/theme/moon.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<h2>intro</h2>
+					<hr />
+					<div>
+						<h5>A story about</h5>
+						<ul>
+							<li>accounts / passwords / "<b>2nd</b> factor"</li>
+							<li>security</li>
+							<li>system administration (unix/linux)</li>
+							<li>it's my story / timeline</li>
+							<li>circle back to yubikeys</li>
+							<li>+- 20 minutes</li>
+						</ul>
+					</div>
+					<aside class="notes">
+						<!-- some private notes, view with 's' (meaning show?) -->
+						<div>just tell "the" story</div>
+					</aside>
+				</section>
+
+				<section data-transition="zoom">
+					<section>
+						<h3>presentation in the browser</h3>
+						<br />
+						<div>use a browser in fullscreen</div>
+						<div>"slide(s)" with html and/or markdown</div>
+						<div>(created with reveal.js)</div>
+					</section>
+					<section>
+						<h4>slides navigation</h4>
+						<br />
+						<div>done with "arrow-keys"! &nbsp; :)</div>
+						<br />
+						<hr />
+						<br />
+						<h4>git project</h4>
+						<div>(github)</div>
+						<ul>
+							<li>presentation</li>
+							<li><em>code</em> used</li>
+						</ul>
+					</section>
+				</section>
+
+				<section> &hellip; </section>
+
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+
+me=$(basename "$0")
+script_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+
+set -e
+
+shared_config="${script_base_dir}/shared/config"
+if [ -r "${shared_config}" ]
+then
+	source "${shared_config}"
+	printf "${me}, read shared config.   (${shared_config}) \n"
+fi
+
+set -x
+
+sudo --validate
+
+sudo /sbin/service --status-all
+
+sudo apt install --yes telnetd
+
+sudo /sbin/service --status-all
+
+sudo /sbin/service openbsd-inetd status
+

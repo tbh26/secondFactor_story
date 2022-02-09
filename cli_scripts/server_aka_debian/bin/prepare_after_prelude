@@ -1,0 +1,66 @@
+
+set -e
+
+me=$(basename "$0")
+github_sf_repo='https://github.com/tbh26/secondFactor_story.git'
+sf_repo_dir='secondFactor_story'
+this_host=$(hostname)
+sub_dir='cli_scripts'
+server_bin="${cli_scripts}/server_aka_debian/bin"
+shared_config="${cli_scripts}/shared/config"
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; this script is supposed to run on host 'debian', exit. \n"
+	exit 1
+fi
+
+set -x
+
+cd 
+pwd
+id -a
+date
+hostname
+sleep 2
+
+git clone "$github_sf_repo" "${sf_repo_dir}"
+
+cd "${sf_repo_dir}"
+
+if [ -r "${shared_config}" ]
+then
+	source "${shared_config}"
+	printf "${me}, read shared config.   (${shared_config}) \n"
+fi
+
+##
+
+sudo --validate
+
+##
+##
+
+${server_bin}/add_plocate
+ 
+date
+type -a plocate
+type -a updatedb
+time sudo updatedb
+date
+
+##
+
+type -a telnet
+sudo /sbin/service --status-all
+${server_bin}/add_telnetd
+sudo /sbin/service --status-all
+sudo /sbin/service openbsd-inetd status
+
+##
+
+
+###
+${server_bin}/apt_update_and_reboot
+###
+

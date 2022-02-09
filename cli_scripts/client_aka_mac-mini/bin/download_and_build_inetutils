@@ -1,0 +1,52 @@
+
+set -e
+
+#netutils_site='https://www.gnu.org/software/inetutils/'
+netutils_dl_link='https://ftp.gnu.org/gnu/inetutils/inetutils-2.2.tar.xz'
+netutils_tar=$(basename $netutils_dl_link)
+netutils_dir=$(echo "${netutils_tar}" | sed 's/\.tar\.xz//' )
+
+set -x
+
+cd ~/Downloads
+
+if [ -r "${netutils_tar}" ]
+then
+	mv "${netutils_tar}" "${netutils_tar}-old"
+fi
+
+if [ -d "${netutils_dir}" ]
+then
+	echo mv "${netutils_dir}" "${netutils_dir}-old"
+fi
+
+echo curl --verbose --remote-name "${netutils_dl_link}"
+
+echo tar tvf "${netutils_tar}" # check tar
+
+echo tar xpf "${netutils_tar}" # untar
+
+cd ${netutils_dir}
+
+date
+
+./configure --version
+echo time ./configure
+echo make
+
+alias telnet="$HOME/Downloads/${netutils_dir}/telnet/telnet"
+
+telnet --help
+
+telnet --usage
+
+alias
+
+type telnet
+
+set +x
+
+printf "alias $(alias telnet)   # (copy / paste)\n"
+
+date
+

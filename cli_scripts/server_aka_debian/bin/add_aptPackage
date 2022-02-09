@@ -1,0 +1,31 @@
+
+me=$(basename "$0")
+#script_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+meta_name='add_aptPackage'
+
+set -e
+
+if [ "$me" = "$meta_name" ]
+then
+	# read $1 and use that? or exit..
+	printf "${me}; this is the wrapper script, sym-link from another_name and use that.  (exit...) \n"
+	exit 1
+fi
+
+apt_package=$( printf "${me} \n" | cut -d'_' -f2 )
+
+if [ -z "${apt_package}" ]
+then
+	printf "${me}; apt_package name empty, exit. \n"
+	exit 2
+fi
+
+set -x
+
+apt search "${apt_package}"
+
+sudo --validate
+
+sudo apt install --yes "${apt_package}"
+
+

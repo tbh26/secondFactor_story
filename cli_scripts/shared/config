@@ -1,0 +1,28 @@
+
+# watch it, only tested on darwin(mac OS) and debian linux.
+
+story_mac_mini_ip_addr='192.168.237.232'
+
+story_debian_ip_addr='192.168.237.152'
+
+story_telnet_tcp_port=$(grep -w  ^telnet /etc/services | awk  ' /tcp/  { print $2 } ' | cut -d'/' -f1)
+
+story_user_id=$(id -u)
+
+if [ "$story_user_id" = '0' ]
+then
+	printf "Yup, we are *root*! \n"
+else
+	printf "Oops, we are *not* root... \n"
+fi
+
+story_default_password='Password123'
+
+story_server_initial_account_user='tbhes'
+story_server_initial_account_id='1000'
+story_server_initial_account_group='tbhes'
+story_server_initial_account_gid='1000'
+
+
+export EDITOR='vi'
+

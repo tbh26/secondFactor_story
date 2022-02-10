@@ -20,32 +20,69 @@
 			<div class="slides">
 
 				<section>
-					<h2>intro</h2>
-					<hr />
+					<h3>intro</h3>
+					<br />
+					<h4>why</h4>
 					<div>
-						<h5>A story about</h5>
 						<ul>
-							<li>accounts / passwords / "<b>2nd</b> factor"</li>
-							<li>(account) security</li>
-							<li>system administration (unix/linux)</li>
-<!--							<li>concepts: "otp" & "public-key cryptography" </li>-->
-							<li>circle back to yubikeys (and web security)</li>
-							<li>+- 20 minutes</li>
+							<li>nov/dec 2021 'update' on web access (security)</li>
+							<li>"we" enabled <a href="https://www.surf.nl/surfsecureid-beveilig-je-diensten-extra-met-multi-factorauthenticatie">SURFsecureID</a> on <em>tooling</em></li>
+								<ul>
+									<li>git (version control) <a href="https://gitlab.ic.uva.nl">gitlab</a></li>
+									<li>docs / wiki <a href="https://confluence.ic.uva.nl">confluence</a></li>
+									<li>workflow <a href="https://jira.ic.uva.nl">jira</a></li>
+								</ul>
+							<li>yubikey purchase</li>
 						</ul>
 					</div>
+					<br />
+					<h4>who</h4>
+					<div> &hellip; </div>
 					<aside class="notes">
 						<!-- some private notes, view with 's' (meaning show?) -->
 						<div>just tell "the" story</div>
 					</aside>
 				</section>
 
+				<section>
+					<h4>what</h4>
+					<hr />
+					<h5>A story</h5>
+					<ul>
+						<li>access, password(s) and some "<b>2nd</b> factor"s</li>
+						<li>account security</li>
+						<li>Two-factor authentication (2FA)</li>
+						<li>2FA concepts; "otp" & "public-key cryptography" </li>
+						<li>circle back to yubikeys (and usage)</li>
+						<li>+- 20 minutes</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>how</h4>
+					<hr />
+					<ul>
+						<li>presentation</li>
+						<li>at interval; demo's</li>
+						<ul>
+							<li>command line</li>
+							<li>browser</li>
+						</ul>
+						<li>after presentation, Q&A ?</li>
+						<br />
+						<br />
+						<div>(it's "my" (hi)story)</div>
+					</ul>
+
+				</section>
+
 				<section data-transition="zoom">
 					<section>
-						<h3>presentation in the browser</h3>
+						<h4>the presentation</h4>
 						<br />
-						<div>use a browser in fullscreen</div>
-						<div>"slide(s)" with html and/or markdown</div>
-						<div>(created with reveal.js)</div>
+						<div>browser into fullscreen (and back)</div>
+						<div>"slide(s)" created with html and/or markdown</div>
+						<small>(created with reveal.js)</small>
 					</section>
 					<section>
 						<h4>slides navigation</h4>
@@ -54,47 +91,98 @@
 						<br />
 						<hr />
 						<br />
-						<h4>a git project</h4>
+						<h4>it's a git project</h4>
 						<div>(github)</div>
 						<ul>
 							<li>presentation</li>
-							<li><em>code</em> (or scripts) used</li>
-							<li>last slide contains links and/or resources</li>
+							<li><em>code</em> (and/or scripts)</li>
+							<li>links and/or resources</li>
 						</ul>
 					</section>
 				</section>
 
 				<section>
-					<h4>tell a story</h4>
-					<ul>
-						<li>some slides</li>
-						<li>hands-on, demo's</li>
+					<section>
+						<h4>the demo's</h4>
 						<ul>
-							<li>terminal and unix command-line interface (aka shell)</li>
-							<li>browser</li>
+							<li>hands-on</li>
+							<ul>
+								<li>shell / cli</li>
+								<ul>
+									<li>terminal</li>
+									<li>unix commands / scripts</li>
+								</ul>
+								<li>browser</li>
+							</ul>
 						</ul>
-						<li>after presentation, Q&A (ok?)</li>
-					</ul>
-					<br />
-					<br />
-					<hr />
-					<br />
-					<div>it's "my" (hi)story</div>
+						<br />
+						<aside class="notes">
+							<div></div>
+						</aside>
+					</section>
 
-					<aside class="notes">
-						<div></div>
-					</aside>
+					<section>
+						<h4>demo setup cli</h4>
+						<ul>
+							<li>client</li>
+							<li>server</li>
+							<li>yubikeys</li>
+						</ul>
+						<br />
+						<h6>view setup</h6>
+					</section>
+
+					<section>
+						<h4>browser</h4>
+					</section>
 
 				</section>
 
-				<section >
-					<h4>demo setup</h4>
-					<hr />
+				<section>
+					<h4>the beginning</h4>
 					<ul>
-						<li></li>
+						<li>eduction (before 1995)</li>
+						<ul>
+							<li>MTS electronica</li>
+							<li>HTS elektrotechniek (tck)</li>
+							<li>informatica VU</li>
+						</ul>
+						<li>remote access</li>
+						<ul>
+							<li>telnet, ftp</li>
+							<li>(berkley) "r" commands</li>
+						</ul>
+					</ul>
+					<h6>first demo</h6>
+				</section>
+
+				<section>
+					<h4>work</h4>
+					<ul>
+						<li>military service -> alternative civilian service</li>
+						<li>Informatiseringcentrum UvA</li>
+						<ul>
+							<li>not yet "central"</li>
+							<li>remote access, again: telnet, ftp</li>
+							<li>need for more, one time passwords (otp)?</li>
+						</ul>
+						<li>system administration</li>
+						<ul>
+							<li>pre firewall, tcp wrappers</li>
+							<li>(network ACL permissive)</li>
+							<li>commercial solution for OTP</li>
+							<li>scripts / automation</li>
+						</ul>
 					</ul>
 				</section>
 
+				<section>
+					<h4>SecurID</h4>
+					<ul>
+						<li>shell: /usr/local/ace/prog/sdshell</li>
+						<li>ftp ?</li>
+					</ul>
+				</section>
 
 				<section> &hellip; </section>
 

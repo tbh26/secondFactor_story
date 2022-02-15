@@ -1,0 +1,79 @@
+
+set -e
+
+me=$(basename "$0")
+
+##
+
+function user_group_with_id {
+	local user_group_name="$1"
+	local id="$2"
+	local shell="$3"
+	local gecos="$4"
+	#
+	if [ -z "${shell}" ]
+	then
+		shell='/bin/bash'
+	fi
+	if [ ! -x "${shell}" ]
+	then
+		printf "${me} WARNING; NO execution possible on shell. (${shell})\n"
+	fi
+	if [ -z "${gecos}" ]
+	then
+		gecos="user/group with id ${id}"
+	fi
+	#
+	printf "\n${me} info; id: ${id}, user/group name: \"${user_group_name}\", shell: ${shell} \n\n"
+	#
+	if [ -z "${id}" ]
+	then
+		printf "${me}: NO id, exit. \n"
+		return
+	fi
+	#
+	if [ -z "${user_group_name}" ]
+	then
+		printf "${me}: NO user/group name, exit. \n"
+		return
+	fi
+	#
+	if [ -d "/home/${user_group_name}" ]
+	then
+		printf "${me}, WARNING; home dir already exist. (/home/${user_group_name}) \n"
+	fi
+	#
+	##
+	#
+	set -x
+	sudo /usr/sbin/groupadd --gid "${id}" "${user_group_name}"
+	sudo /usr/sbin/useradd --home-dir "/home/${user_group_name}" --create-home \
+		--uid "${id}" "${user_group_name}" --gid "${user_group_name}" \
+		--shell "${shell}" --comment "${gecos}"
+	set +x
+	#
+	printf "\n${me} done. (${id}, ${user_group_name}) \n\n"
+	#
+}
+
+
+##
+
+
+case $# in
+2|3|4)
+	#
+	sudo --validate
+	#
+	user_group_with_id "$@"
+	#
+	;;
+*)
+	#
+	printf "\nUsage: ${me} [some name] [id] </some/shell> <some comment(gecos)> ] \n\n"
+	exit 22
+	;;
+esac
+
+###
+

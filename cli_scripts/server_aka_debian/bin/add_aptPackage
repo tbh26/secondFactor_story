@@ -12,7 +12,7 @@ then
 	exit 1
 fi
 
-apt_package=$( printf "${me} \n" | cut -d'_' -f2 )
+apt_package=$( printf "${me}\n" | cut -d'_' -f2 )
 
 if [ -z "${apt_package}" ]
 then

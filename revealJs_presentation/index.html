@@ -40,21 +40,20 @@
 					<div> &hellip; </div>
 					<aside class="notes">
 						<!-- some private notes, view with 's' (meaning show?) -->
-						<div>just tell "the" story</div>
+						<div>just tell the story</div>
 					</aside>
 				</section>
 
 				<section>
 					<h4>what</h4>
 					<hr />
-					<h5>A story</h5>
+					<h5>story</h5>
 					<ul>
-						<li>access, password(s) and some "<b>2nd</b> factor"s</li>
-						<li>account security</li>
-						<li>Two-factor authentication (2FA)</li>
-						<li>2FA concepts; "otp" & "public-key cryptography" </li>
+						<li>remote access (aka login) & security</li>
+						<li>password / Two-factor authentication (2FA)</li>
+						<li>2FA focus; "otp" & "public-key cryptography" </li>
 						<li>circle back to yubikeys (and usage)</li>
-						<li>+- 20 minutes</li>
+						<li>+- 30 minutes</li>
 					</ul>
 				</section>
 
@@ -63,15 +62,11 @@
 					<hr />
 					<ul>
 						<li>presentation</li>
-						<li>at interval; demo's</li>
-						<ul>
-							<li>command line</li>
-							<li>browser</li>
-						</ul>
-						<li>after presentation, Q&A ?</li>
+						<li>some demo's (in between)</li>
+						<li>Q & A after presentation?</li>
 						<br />
 						<br />
-						<div>(it's "my" (hi)story)</div>
+						<div>/* may the demo gods be with me */</div>
 					</ul>
 
 				</section>
@@ -80,8 +75,8 @@
 					<section>
 						<h4>the presentation</h4>
 						<br />
-						<div>browser into fullscreen (and back)</div>
-						<div>"slide(s)" created with html and/or markdown</div>
+						<div>some (hi)story</div>
+						<div>in browser "slide(s)" created with html and/or markdown</div>
 						<small>(created with reveal.js)</small>
 					</section>
 					<section>
@@ -107,11 +102,12 @@
 						<ul>
 							<li>hands-on</li>
 							<ul>
-								<li>shell / cli</li>
+								<li>cli / shell</li>
 								<ul>
 									<li>terminal</li>
 									<li>unix commands / scripts</li>
 								</ul>
+								<li>yubikey manager (desktop program)</li>
 								<li>browser</li>
 							</ul>
 						</ul>
@@ -129,11 +125,8 @@
 							<li>yubikeys</li>
 						</ul>
 						<br />
-						<h6>view setup</h6>
-					</section>
-
-					<section>
-						<h4>browser</h4>
+						<br />
+						<div>meet this setup</div>
 					</section>
 
 				</section>
@@ -141,9 +134,9 @@
 				<section>
 					<h4>the beginning</h4>
 					<ul>
-						<li>eduction (before 1995)</li>
+						<li>(my) eduction (before 1995)</li>
 						<ul>
-							<li>MTS electronica</li>
+							<li> &hellip; </li>
 							<li>HTS elektrotechniek (tck)</li>
 							<li>informatica VU</li>
 						</ul>
@@ -153,38 +146,144 @@
 							<li>(berkley) "r" commands</li>
 						</ul>
 					</ul>
-					<h6>first demo</h6>
+					<br />
+					<br />
+					<h6>first demo!</h6>
+					<aside class="notes">
+						<div>telnet, tcpdump, show "flow"</div>
+						<div>rlogin / rsh and 'trust'</div>
+					</aside>
 				</section>
 
 				<section>
 					<h4>work</h4>
 					<ul>
 						<li>military service -> alternative civilian service</li>
-						<li>Informatiseringcentrum UvA</li>
+						<li>Informatiseringcentrum UvA (dec 1995)</li>
 						<ul>
-							<li>not yet "central"</li>
-							<li>remote access, again: telnet, ftp</li>
-							<li>need for more, one time passwords (otp)?</li>
+							<li>(not yet "central")</li>
+							<li>remote access</li>
+							<li>need for more; one time passwords (otp)?</li>
 						</ul>
 						<li>system administration</li>
 						<ul>
-							<li>pre firewall, tcp wrappers</li>
-							<li>(network ACL permissive)</li>
+							<li>pre firewall, host: tcp wrappers</li>
+							<li>(network ACL was sort-of permissive)</li>
+							<li>predecessor, generated OTP serie on paper</li>
 							<li>commercial solution for OTP</li>
-							<li>scripts / automation</li>
 						</ul>
+						<div>("infra" needed for otp)</div>
 					</ul>
 				</section>
 
 				<section>
-					<h4>SecurID</h4>
-					<ul>
-						<li>shell: /usr/local/ace/prog/sdshell</li>
-						<li>ftp ?</li>
-					</ul>
+
+					<section>
+						<h4>SecurID</h4>
+						<br />
+						<h6>good old telnet</h6>
+						<ul>
+							<li>no pam yet (password removed?)</li>
+							<li>login; /usr/local/ace/prog/sdshell</li>
+						</ul>
+					</section>
+
+					<section>
+						<h6>ftp</h6>
+						<br />
+						<div>solving a "problem"</div>
+						<br />
+						<ul>
+							<li>cost, maybe static password?</li>
+							<li>ftp user with restricted access (aka chroot)</li>
+							<li>custom solution, modify open source "wu-ftpd"</li>
+							<li>add functionality and "link" with securID lib</li>
+						</ul>
+					</section>
+
+					<section>
+						<h6>no otp demo</h6>
+						<div>show beheer vpn?</div>
+					</section>
+
 				</section>
 
-				<section> &hellip; </section>
+				<section>
+					<h4>telnet dead?</h4>
+					<div>cert mail?</div>
+				</section>
+
+				<section>
+
+					<section>
+						<h4>other track</h4>
+						<div>public-key cryptography</div>
+						<div><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">wikipedia ?</a></div>
+						<br />
+						<hr />
+						<br />
+						<h6>goal</h6>
+						<div>a "trusted channel" to exchange 'messages'</div>
+					</section>
+
+					<section>
+						<div>Alice, Bob & Eve (evil)?</div>
+						<div>public / private keys...</div>
+						<small>animate?</small>
+					</section>
+
+				</section>
+
+				<section>
+					<h4>ssh</h4>
+					<ul>
+						<li>rsh -> ssh, rcp -> scp</li>
+						<li>password vs "public key"</li>
+						<li>{git: {ro: https, rw: ssh}}</li>
+					</ul>
+					<br>
+					<br>
+					<h6>ssh demo (3x?)</h6>
+				</section>
+
+				<section>
+					<h4>Yubikey manager</h4>
+					<div>why "otp" and/or "public-key thing"</div>
+				</section>
+
+				<section>
+					<h4>browser</h4>
+					<div>not work related:</div>
+					<div>microsoft</div>
+					<div>google</div>
+					<div>github</div>
+					<div>gitlab?</div>
+				</section>
+
+				<section>
+					<h4>surfconext / SecurID</h4>
+					<div>vetting</div>
+					<div>level of assurance aka "loa"</div>
+					<div>ticker app: loa II</div>
+					<div>yubikey(otp): loa III</div>
+					<div>NO redundancy</div>
+				</section>
+
+				<section>
+					<h4>alternative</h4>
+					<div>during/after idp step?</div>
+					<div>now active directory</div>
+				</section>
+
+				<section>
+					<h6>sources / links</h6>
+					<div><a href="">bla</a> </div>
+				</section>
+
+				<section>
+					<div>end, thanks!</div>
+					<div>&hellip;</div>
+				</section>
 
 			</div>
 

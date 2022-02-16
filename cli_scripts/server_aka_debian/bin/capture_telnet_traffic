@@ -16,7 +16,7 @@ fi
 
 set -x
 
-if [ -x "$shared_config" ]
+if [ -r "$shared_config" ]
 then
 	source "$shared_config"
 fi

@@ -29,7 +29,7 @@ function fixHome {
 	if [ ! -d "$ssh_dir" ]
 	then
 		sudo mkdir "$ssh_dir"
-		sudo chmod 0600 "$ssh_dir"
+		sudo chmod 0750 "$ssh_dir"
 		sudo chown "${user}:${user}" "$ssh_dir"
 		sudo touch "${ssh_dir}/authorized_keys"
 		sudo printf "#\n#\n" >> "${ssh_dir}/authorized_keys"

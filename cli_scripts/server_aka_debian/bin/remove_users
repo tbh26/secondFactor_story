@@ -1,0 +1,29 @@
+
+set -e
+
+me=$(basename "$0")
+scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${scripts_base_dir}/shared/config"
+this_host=$(hostname)
+now=$(date +%F-%H%M%S)
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; this script is supposed to run on host 'debian', exit. \n"
+	exit 1
+fi
+
+set -x
+
+if [ -r "$shared_config" ]
+then
+	source "$shared_config"
+fi
+
+
+sudo /sbin/groupdel testUser
+sudo /sbin/userdel --remove testUser
+
+sudo /sbin/groupdel tjeerdh
+sudo /sbin/userdel --remove tjeerdh
+

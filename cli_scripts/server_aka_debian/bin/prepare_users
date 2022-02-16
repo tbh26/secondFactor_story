@@ -28,29 +28,31 @@ function fixHome {
 	cd ${home_dir}
 	if [ ! -d "$ssh_dir" ]
 	then
-		mkdir "$ssh_dir"
-		chmod 0600 "$ssh_dir"
-		chown "${user}:${user}" "$ssh_dir"
-		touch "${ssh_dir}/authorized_keys"
-		printf "#\n#\n" >> "${ssh_dir}/authorized_keys"
-		chmod 0600 "${user}:${user}" "${ssh_dir}/authorized_keys"
-		chown "${user}:${user}" "${ssh_dir}/authorized_keys"
+		sudo mkdir "$ssh_dir"
+		sudo chmod 0600 "$ssh_dir"
+		sudo chown "${user}:${user}" "$ssh_dir"
+		sudo touch "${ssh_dir}/authorized_keys"
+		sudo printf "#\n#\n" >> "${ssh_dir}/authorized_keys"
+		sudo chmod 0600 "${user}:${user}" "${ssh_dir}/authorized_keys"
+		sudo chown "${user}:${user}" "${ssh_dir}/authorized_keys"
 	fi
 	if [ ! -f "$rhost_file" ]
 	then
-		touch "${rhost_file}"
-		printf "#\n#\n" >> "${rhost_file}"
-		chmod 0600 "${user}:${user}" "${rhost_file}"
-		chown "${user}:${user}" "${rhost_file}"
+		sudo touch "${rhost_file}"
+		sudo printf "#\n#\n" >> "${rhost_file}"
+		sudo chmod 0600 "${user}:${user}" "${rhost_file}"
+		sudo chown "${user}:${user}" "${rhost_file}"
 	fi
+	ls -al "${home_dir}"
 }
 
+sudo --validate
 
 ${scripts_base_dir}/server_aka_debian/bin/add_testUser_4321
 
-sudo fixHome testUser
+fixHome testUser
 
 ${scripts_base_dir}/server_aka_debian/bin/add_tjeerdh_1234
 
-sudo fixHome tjeerdh
+fixHome tjeerdh
 

@@ -52,10 +52,17 @@ function fixHome {
 
 sudo --validate
 
-${scripts_base_dir}/server_aka_debian/bin/add_testUser_4321
+######
 
-fixHome testUser
+### testUser
+
+${scripts_base_dir}/server_aka_debian/bin/add_testUser_4321
+${scripts_base_dir}/server_aka_debian/bin/update_password 'testUser' "${story_default_password}"
+fixHome 'testUser'
+
+
+### tjeerdh
 
 ${scripts_base_dir}/server_aka_debian/bin/add_tjeerdh_1234
-
-fixHome tjeerdh
+${scripts_base_dir}/server_aka_debian/bin/update_password 'tjeerdh' "${story_default_password}"
+fixHome 'tjeerdh'

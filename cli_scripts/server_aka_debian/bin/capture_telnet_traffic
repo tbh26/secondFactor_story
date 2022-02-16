@@ -3,7 +3,7 @@ set -e
 
 me=$(basename "$0")
 scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
-shared_config="${script_base_dir}/shared/config"
+shared_config="${scripts_base_dir}/shared/config"
 this_host=$(hostname)
 now=$(date +%F-%H%M%S)
 pcap_file="/var/tmp/${me}-${now}.pcap"

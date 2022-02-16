@@ -30,10 +30,12 @@ function fixHome {
 	if [ ! -d "$ssh_dir" ]
 	then
 		sudo -u "$user" mkdir "${ssh_dir}"
-		sudo -u "$user" chmod 0700 "${ssh_dir}"
+		sudo -u "$user" chmod 0777 "${ssh_dir}"
 		sudo -u "$user" touch "${ssh_auth_keys}"
 		sudo -u "$user" printf "#\n#\n" > "${ssh_auth_keys}"
+		sudo chown "${user}:${user}" ${ssh_auth_keys}"
 		sudo -u "$user" chmod 0600 ${ssh_auth_keys}"
+		sudo -u "$user" chmod 0700 "${ssh_dir}"
 	fi
 	if [ ! -f "$rhost_file" ]
 	then

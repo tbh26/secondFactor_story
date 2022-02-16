@@ -45,7 +45,9 @@ function fixHome {
 		sudo chown "${user}:${user}" "${rhosts_file}"
 		sudo -u "$user" chmod 0600 "${rhosts_file}"
 	fi
-	ls -altr "${home_dir}"
+	#
+	sudo -u "$user" ls -altr "${home_dir}"
+	sudo -u "$user" ls -altr "${ssh_dir}"
 }
 
 sudo --validate

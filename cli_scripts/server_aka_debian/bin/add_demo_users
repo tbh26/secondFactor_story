@@ -37,7 +37,7 @@ function fixHome {
 		sudo -u "$user" chmod 0600 "${ssh_auth_keys}"
 		sudo -u "$user" chmod 0700 "${ssh_dir}"
 	fi
-	if [ ! -f "$rhost_file" ]
+	if [ ! -f "${rhosts_file}" ]
 	then
 		sudo -u "$user" touch "${rhosts_file}"
 		sudo -u "$user" chmod 0666 "${rhosts_file}"
@@ -45,7 +45,7 @@ function fixHome {
 		sudo chown "${user}:${user}" "${rhosts_file}"
 		sudo -u "$user" chmod 0600 "${rhosts_file}"
 	fi
-	ls -al "${home_dir}"
+	ls -altr "${home_dir}"
 }
 
 sudo --validate

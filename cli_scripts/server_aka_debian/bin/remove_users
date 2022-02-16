@@ -22,8 +22,8 @@ fi
 
 
 sudo /sbin/userdel --remove testUser
-sudo /sbin/groupdel testUser
+#sudo /sbin/groupdel testUser
 
 sudo /sbin/userdel --remove tjeerdh
-sudo /sbin/groupdel tjeerdh
+#sudo /sbin/groupdel tjeerdh
 

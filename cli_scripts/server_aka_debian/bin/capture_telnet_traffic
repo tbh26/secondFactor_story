@@ -1,0 +1,26 @@
+
+set -e
+
+me=$(basename "$0")
+script_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${script_base_dir}/../shared/config"
+this_host=$(hostname)
+
+network_interface='
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; this script is supposed to run on host 'debian', exit. \n"
+	exit 1
+fi
+
+set -x
+
+if [ -x "$shared_config" ]
+then
+    source "$shared_config"
+fi
+
+sudo --validate
+
+type tcpdump

@@ -1,6 +1,7 @@
 
 me=$(basename "$0")
 #script_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+this_host=$(hostname)
 meta_name='add_aptPackage'
 
 set -e
@@ -12,12 +13,19 @@ then
 	exit 1
 fi
 
+
 apt_package=$( printf "${me}\n" | cut -d'_' -f2 )
 
 if [ -z "${apt_package}" ]
 then
 	printf "${me}; apt_package name empty, exit. \n"
 	exit 2
+fi
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; NOT on host 'debian', exit. \n"
+	exit 1
 fi
 
 set -x

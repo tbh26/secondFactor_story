@@ -1,0 +1,56 @@
+
+set -e
+
+me=$(basename "$0")
+scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${scripts_base_dir}/shared/config"
+this_host=$(hostname)
+now=$(date +%F-%H%M%S)
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; this script is supposed to run on host 'debian', exit. \n"
+	exit 1
+fi
+
+set -x
+
+if [ -r "$shared_config" ]
+then
+	source "$shared_config"
+fi
+
+function fixHome {
+	local user="$1"
+	local home_dir="/home/$user"
+	local ssh_dir='./.ssh'
+	local rhost_file='./.rhost'
+	cd ${home_dir}
+	if [ ! -d "$ssh_dir" ]
+	then
+		mkdir "$ssh_dir"
+		chmod 0600 "$ssh_dir"
+		chown "${user}:${user}" "$ssh_dir"
+		touch "${ssh_dir}/authorized_keys"
+		printf "#\n#\n" >> "${ssh_dir}/authorized_keys"
+		chmod 0600 "${user}:${user}" "${ssh_dir}/authorized_keys"
+		chown "${user}:${user}" "${ssh_dir}/authorized_keys"
+	fi
+	if [ ! -f "$rhost_file" ]
+	then
+		touch "${rhost_file}"
+		printf "#\n#\n" >> "${rhost_file}"
+		chmod 0600 "${user}:${user}" "${rhost_file}"
+		chown "${user}:${user}" "${rhost_file}"
+	fi
+}
+
+
+${scripts_base_dir}/server_aka_debian/bin/add_testUser_4321
+
+sudo fixHome testUser
+
+${scripts_base_dir}/server_aka_debian/bin/add_tjeerdh_1234
+
+sudo fixHome tjeerdh
+

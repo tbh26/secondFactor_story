@@ -22,7 +22,7 @@ then
 fi
 
 #network_interface='enp2s0f0'
-network_interface="story_server_network_interface" # Pffff
+network_interface="${story_server_network_interface}" # Pffff
 
 if [ -z "$network_interface" ]
 then

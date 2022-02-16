@@ -35,7 +35,7 @@ ssh-keygen \
 	-C "${key_comment}" \
 	-f "${identity_file}"
 
-ls -al "${identity_file}\*"
+ls -al "${identity_file}*"
 
 set +x
 

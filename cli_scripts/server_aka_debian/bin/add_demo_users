@@ -43,7 +43,7 @@ function fixHome {
 		sudo -u "$user" chmod 0666 "${rhosts_file}"
 		sudo -u "$user" printf "#\n#\n" > "${rhosts_file}"
 		sudo chown "${user}:${user}" "${{rhosts_file}"
-		sudo -u "$user" chmod 0600 ${rhosts_file}"
+		sudo -u "$user" chmod 0600 "${rhosts_file}"
 	fi
 	ls -al "${home_dir}"
 }

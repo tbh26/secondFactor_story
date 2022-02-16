@@ -29,12 +29,13 @@ function fixHome {
 	if [ ! -d "$ssh_dir" ]
 	then
 		sudo mkdir "$ssh_dir"
-		sudo chmod 0750 "$ssh_dir"
+		sudo chmod 0755 "$ssh_dir"
 		sudo chown "${user}:${user}" "$ssh_dir"
 		sudo touch "${ssh_dir}/authorized_keys"
-		sudo printf "#\n#\n" >> "${ssh_dir}/authorized_keys"
+		sudo printf "#\n#\n" > "${ssh_dir}/authorized_keys"
 		sudo chmod 0600 "${user}:${user}" "${ssh_dir}/authorized_keys"
 		sudo chown "${user}:${user}" "${ssh_dir}/authorized_keys"
+		sudo chmod 0700 "$ssh_dir"
 	fi
 	if [ ! -f "$rhost_file" ]
 	then

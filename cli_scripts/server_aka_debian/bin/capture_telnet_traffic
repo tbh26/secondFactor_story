@@ -5,8 +5,8 @@ me=$(basename "$0")
 script_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
 shared_config="${script_base_dir}/../shared/config"
 this_host=$(hostname)
-
-network_interface='
+now=$(date +%F-%H%M%S)
+pcap_file="/var/tmp/${me}-${now}.pcap"
 
 if [ "$this_host" != 'debian' ]
 then
@@ -18,9 +18,19 @@ set -x
 
 if [ -x "$shared_config" ]
 then
-    source "$shared_config"
+	source "$shared_config"
+fi
+
+network_interface="$network_interface"
+
+if [ -z "$network_interface" ]
+then
+	printf "$me: Oops, NO network interface, exit...\n"
+	exit 1
 fi
 
 sudo --validate
 
 type tcpdump
+
+sudo tcpdump -i "${network_interface}" -w "${pcap_file}" tcp port telnet

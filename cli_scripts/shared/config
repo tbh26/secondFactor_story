@@ -23,6 +23,7 @@ story_server_initial_account_id='1000'
 story_server_initial_account_group='tbhes'
 story_server_initial_account_gid='1000'
 
+story_server_network_interface='enp2s0f0'
 
 export EDITOR='vi'
 

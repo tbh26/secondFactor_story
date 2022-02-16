@@ -40,7 +40,7 @@ set -e
 
 key_user="$1"
 key_type="$2"
-key_target='yubikey demo'
+key_target='yubikey-demo'
 key_comment="=-= ${key_user} security-key type ${key_type} -=- ${key_target} -=- ${now} =-="
 #key_passphrase='pp4sk'
 passphrase="${story_default_passphrase}"
@@ -74,7 +74,7 @@ set -x
 #-O device="${sk_device}" \
 
 ssh-keygen \
-	-v \
+	-vvv \
 	-t "${key_type}" \
 	-C "${key_comment}" \
 	-P "${passphrase}" \

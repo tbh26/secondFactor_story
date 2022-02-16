@@ -1,0 +1,68 @@
+set -e
+
+me=$(basename "$0")
+scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${scripts_base_dir}/shared/config"
+this_host=$(hostname)
+now=$(date +%F-%H%M%S)
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; this script is supposed to run on host 'debian', exit. \n"
+	exit 1
+fi
+
+set -x
+
+if [ -r "$shared_config" ]
+then
+	source "$shared_config"
+fi
+
+function fixHome {
+	local user="$1"
+	local home_dir="/home/${user}"
+	local ssh_dir="${home_dir}/.ssh"
+	local ssh_auth_keys="${ssh_dir}/authorized_keys"
+	local rhosts_file="${home_dir}/.rhosts"
+	### cd "${home_dir}"
+	if [ ! -d "${ssh_dir}" ]
+	then
+		sudo -u "$user" mkdir "${ssh_dir}"
+		sudo -u "$user" chmod 0777 "${ssh_dir}"
+		sudo -u "$user" touch "${ssh_auth_keys}"
+		sudo -u "$user" chmod 0666 "${ssh_auth_keys}"
+		sudo -u "$user" printf "#\n#\n" > "${ssh_auth_keys}"
+		sudo chown "${user}:${user}" "${ssh_auth_keys}"
+		sudo -u "$user" chmod 0600 "${ssh_auth_keys}"
+		sudo -u "$user" chmod 0700 "${ssh_dir}"
+	fi
+	if [ ! -f "${rhosts_file}" ]
+	then
+		sudo -u "$user" touch "${rhosts_file}"
+		sudo -u "$user" chmod 0666 "${rhosts_file}"
+		sudo -u "$user" printf "#\n#\n" > "${rhosts_file}"
+		sudo chown "${user}:${user}" "${rhosts_file}"
+		sudo -u "$user" chmod 0600 "${rhosts_file}"
+	fi
+	#
+	sudo -u "$user" ls -altr "${home_dir}"
+	sudo -u "$user" ls -altr "${ssh_dir}"
+}
+
+sudo --validate
+
+######
+
+### testUser
+
+${scripts_base_dir}/server_aka_debian/bin/add_testUser_4321
+${scripts_base_dir}/server_aka_debian/bin/update_password 'testUser' "${story_default_password}"
+fixHome 'testUser'
+
+
+### tjeerdh
+
+${scripts_base_dir}/server_aka_debian/bin/add_tjeerdh_1234
+${scripts_base_dir}/server_aka_debian/bin/update_password 'tjeerdh' "${story_default_password}"
+fixHome 'tjeerdh'

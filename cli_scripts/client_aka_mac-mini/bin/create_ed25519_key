@@ -1,0 +1,48 @@
+#!/bin/bash
+
+me=$(basename "$0")
+#dir_path=$(dirname "$0")
+scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${scripts_base_dir}/shared/config"
+now=$(date +%F_%H%M%S)
+
+if [ $# -ne 1 ]
+then
+  printf "Usage: ${me} [username] \n"
+  exit 1
+fi
+
+if [ -r "$shared_config" ]
+then
+	source "$shared_config"
+fi
+
+set -e
+set -x
+
+key_username="$1"
+key_type='ed25519'
+key_target='demo'
+key_comment="${key_username} ${key_type} key for ${key_target} stuff"
+identity_file="./${key_username}_${key_type}_${key_target}"
+passphrase="${story_default_passphrase}"
+
+ssh-keygen \
+	-t "${key_type}" \
+	-N "${passphrase}" \
+	-C "${key_comment}" \
+	-f "${identity_file}"
+
+ls -al "${identity_file}" "${identity_file}.pub"
+
+date
+
+cat "${identity_file}.pub"
+
+set +x
+
+demo_user="${story_ssh_demo_user}"
+demo_host="${story_ssh_demo_host}"
+
+printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
+

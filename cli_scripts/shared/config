@@ -17,12 +17,18 @@ else
 fi
 
 story_default_password='Password123'
+#story_default_passphrase='howdy'
+story_default_passphrase='demo'
 
 story_server_initial_account_user='tbhes'
 story_server_initial_account_id='1000'
 story_server_initial_account_group='tbhes'
 story_server_initial_account_gid='1000'
 
+story_server_network_interface='enp2s0f0'
+
+story_ssh_demo_user='tjeerdh'
+story_ssh_demo_host='debian'
 
 export EDITOR='vi'
 

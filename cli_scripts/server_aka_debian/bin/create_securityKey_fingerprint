@@ -1,0 +1,83 @@
+#!/bin/bash
+#
+###
+
+me=$(basename "$0")
+dir_path=$(dirname "$0")
+now=$(date +%F_%H%M%S)
+me=$(basename "$0")
+#dir_path=$(dirname "$0")
+scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${scripts_base_dir}/shared/config"
+now=$(date +%F_%H%M%S)
+sk_type='ecdsa-sk'
+sk_type2='ed25519-sk'
+
+
+if [ $# -ne 2 ]
+then
+  printf "\nUsage: ${me} [username] [security_key_type] \n"
+  printf "\n\t\twhere security_key_type: ${sk_type} or ${sk_type2} \n\n"
+  exit 1
+fi
+
+if [ -r "$shared_config" ]
+then
+	source "$shared_config"
+fi
+
+set -e
+
+key_user="$1"
+key_type="$2"
+key_target='yubikey-demo'
+key_comment="=-= ${key_user} security-key type ${key_type} -=- ${key_target} -=- ${now} =-="
+passphrase="${story_default_passphrase}"
+#sk_device='/dev/hidraw1'
+
+if [[ ($key_type != $sk_type) && ($key_type != $sk_type2) ]]
+then
+	printf "${me}; error, in-correct key type, exit! (key_type: $key_type) \n"
+	exit 22
+else
+	printf "\n${me}; create ssh security-key access with: \n\n"
+	printf "\t  user  : $key_user \n"
+	printf "\t  type  : $key_type \n"
+fi
+
+key_dir="."
+
+if [[ ! -d ${key_dir} ]]
+then
+	mkdir -p "${key_dir}"
+	printf "${me}: created key directory (${key_dir}).\n"
+fi
+
+identity_file="./${key_user}_${key_type}_${key_target}"
+
+set -x
+
+#-O device="${sk_device}" 
+
+ssh-keygen \
+	-vvv \
+	-t "${key_type}" \
+	-C "${key_comment}" \
+	-P "${passphrase}" \
+	-f "${identity_file}"
+
+
+ls -al "${identity_file}.pub"
+
+date
+
+cat "${identity_file}.pub"
+
+set +x
+
+demo_user="${story_ssh_demo_user}"
+#demo_host="${story_ssh_demo_host}"
+demo_host='localhost'
+
+printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
+

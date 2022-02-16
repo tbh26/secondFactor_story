@@ -1,0 +1,39 @@
+
+set -e
+
+me=$(basename "$0")
+scripts_base_dir=$(printf $(dirname "$0")/../.. | sed 's;/bin/..;;' )
+shared_config="${scripts_base_dir}/shared/config"
+this_host=$(hostname)
+now=$(date +%F-%H%M%S)
+pcap_file="/var/tmp/${me}-${now}.pcap"
+
+if [ "$this_host" != 'debian' ]
+then
+	printf "${me}; this script is supposed to run on host 'debian', exit. \n"
+	exit 1
+fi
+
+printf "\n tmp *pcap file*: ${pcap_file} \n\n"
+
+set -x
+
+if [ -r "$shared_config" ]
+then
+	source "$shared_config"
+fi
+
+#network_interface='enp2s0f0'
+network_interface="${story_server_network_interface}" # Pffff
+
+if [ -z "$network_interface" ]
+then
+	printf "$me: Oops, NO network interface, exit...\n"
+	exit 1
+fi
+
+sudo --validate
+
+type tcpdump
+
+sudo tcpdump -i "${network_interface}" -w "${pcap_file}" tcp port telnet

@@ -1,0 +1,36 @@
+
+me=$(basename "$0")
+bin_dir=$(printf $(dirname "$0") | sed 's;/bin/..;;' )
+meta_name='add_someUser'
+
+# printf "${me}, bin_dir: ${bin_dir} \n"
+
+set -e
+
+if [ "$me" = "$meta_name" ]
+then
+	printf "${me}; this is a wrapper/meta script, use a sym-linked 'other' scriptname.\n"
+	exit 1
+fi
+
+user_group_name=$( printf "${me}\n" | cut -d'_' -f2 )
+id=$( printf "${me}\n" | cut -d'_' -f3 )
+
+if [ -z "${user_group_name}" ]
+then
+	printf "${me}; NO user/group name, exit. \n"
+	exit 2
+fi
+if [ -z "${id}" ]
+then
+	printf "${me}; NO id, exit. \n"
+	exit 2
+fi
+
+printf "${me}, user/group: ${user_group_name}, id: ${id}.\n"
+
+set -x
+
+sudo --validate
+
+${bin_dir}/add_user_and_group_with_id "${user_group_name}" "${id}"

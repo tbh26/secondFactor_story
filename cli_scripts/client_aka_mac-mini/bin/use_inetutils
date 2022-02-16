@@ -1,0 +1,27 @@
+
+set -e
+
+#netutils_site='https://www.gnu.org/software/inetutils/'
+netutils_dl_link='https://ftp.gnu.org/gnu/inetutils/inetutils-2.2.tar.xz'
+netutils_tar=$(basename $netutils_dl_link)
+netutils_dir=$(echo "${netutils_tar}" | sed 's/\.tar\.xz//' )
+
+set -x
+
+
+alias telnet="$HOME/Downloads/${netutils_dir}/telnet/telnet"
+alias ftp="$HOME/Downloads/${netutils_dir}/ftp/ftp"
+
+telnet --help
+
+telnet --usage
+
+alias
+
+type telnet
+
+set +x
+
+printf "alias $(alias telnet)   # (copy / paste)\n"
+
+

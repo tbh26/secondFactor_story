@@ -14,7 +14,7 @@ then
 	exit 1
 fi
 
-printf "tmp pcap file: ${pcap_file} \n"
+printf "\n tmp *pcap file*: ${pcap_file} \n\n"
 
 set -x
 

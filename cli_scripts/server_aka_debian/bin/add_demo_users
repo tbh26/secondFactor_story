@@ -25,13 +25,13 @@ function fixHome {
 	local ssh_dir="${home_dir}/.ssh"
 	local ssh_auth_keys="${ssh_dir}/authorized_keys"
 	local rhosts_file="${home_dir}/.rhosts"
-	cd ${home_dir}
-	if [ ! -d "$ssh_dir" ]
+	### cd "${home_dir}"
+	if [ ! -d "${ssh_dir}" ]
 	then
 		sudo -u "$user" mkdir "${ssh_dir}"
 		sudo -u "$user" chmod 0777 "${ssh_dir}"
 		sudo -u "$user" touch "${ssh_auth_keys}"
-		sudo -u "$user" chmod 0666 ${ssh_auth_keys}"
+		sudo -u "$user" chmod 0666 "${ssh_auth_keys}"
 		sudo -u "$user" printf "#\n#\n" > "${ssh_auth_keys}"
 		sudo chown "${user}:${user}" "${ssh_auth_keys}"
 		sudo -u "$user" chmod 0600 "${ssh_auth_keys}"
@@ -57,4 +57,3 @@ fixHome testUser
 ${scripts_base_dir}/server_aka_debian/bin/add_tjeerdh_1234
 
 fixHome tjeerdh
-

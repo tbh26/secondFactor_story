@@ -22,23 +22,24 @@ fi
 
 function fixHome {
 	local user="$1"
-	local home_dir="/home/$user"
-	local ssh_dir='./.ssh'
-	local rhost_file='./.rhost'
+	local home_dir="/home/${user}"
+	local ssh_dir="${home_dir}/.ssh"
+	local ssh_auth_keys="${ssh_dir}/authorized_keys"
+	local rhosts_file="${home_dir}/.rhosts"
 	cd ${home_dir}
 	if [ ! -d "$ssh_dir" ]
 	then
-		sudo -u "$user" mkdir "$ssh_dir"
-		sudo -u "$user" chmod 0700 "$ssh_dir"
-		sudo -u "$user" touch "${ssh_dir}/authorized_keys"
-		sudo -u "$user" printf "#\n#\n" > "${ssh_dir}/authorized_keys"
-		sudo -u "$user" chmod 0600 ${ssh_dir}/authorized_keys"
+		sudo -u "$user" mkdir "${ssh_dir}"
+		sudo -u "$user" chmod 0700 "${ssh_dir}"
+		sudo -u "$user" touch "${ssh_auth_keys}"
+		sudo -u "$user" printf "#\n#\n" > "${ssh_auth_keys}"
+		sudo -u "$user" chmod 0600 ${ssh_auth_keys}"
 	fi
 	if [ ! -f "$rhost_file" ]
 	then
-		sudo -u "$user" touch "${rhost_file}"
-		sudo -u "$user" printf "#\n#\n" >> "${rhost_file}"
-		sudo -u "$user" chmod 0600 ${rhost_file}"
+		sudo -u "$user" touch "${rhosts_file}"
+		sudo -u "$user" printf "#\n#\n" > "${rhosts_file}"
+		sudo -u "$user" chmod 0600 ${rhosts_file}"
 	fi
 	ls -al "${home_dir}"
 }

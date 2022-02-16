@@ -17,6 +17,7 @@ else
 fi
 
 story_default_password='Password123'
+story_default_passphrase='howdy'
 
 story_server_initial_account_user='tbhes'
 story_server_initial_account_id='1000'

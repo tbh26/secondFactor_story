@@ -44,4 +44,5 @@ set +x
 demo_user="${story_ssh_demo_user}"
 demo_host="${story_ssh_demo_host}"
 
-printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user}  ${story_ssh_demo_host} \n\n"
+printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
+

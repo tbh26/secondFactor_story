@@ -1,8 +1,5 @@
 #!/bin/bash
 #
-# 14 sept 2021: tbh, initial setup
-# 17 sept 2021: update
-#
 ###
 
 me=$(basename "$0")
@@ -31,20 +28,12 @@ fi
 
 set -e
 
-#if [[ $# != 3 ]]
-#then
-#	printf "\nUsage: ${me} \`key-user\` [ '${sk_type}' | '${sk_type2}' ] \`key-post-id\` \n"
-#	printf "\n\n\t ie. $ ${me} 'tjeerdhes' '${sk_type}' 'yubi2-security-key' \n\n"
-#	exit 22
-#fi
-
 key_user="$1"
 key_type="$2"
 key_target='yubikey-demo'
 key_comment="=-= ${key_user} security-key type ${key_type} -=- ${key_target} -=- ${now} =-="
-#key_passphrase='pp4sk'
 passphrase="${story_default_passphrase}"
-sk_device='/dev/hidraw1'
+#sk_device='/dev/hidraw1'
 
 if [[ ($key_type != $sk_type) && ($key_type != $sk_type2) ]]
 then
@@ -56,9 +45,6 @@ else
 	printf "\t  type  : $key_type \n"
 fi
 
-#exit 2
-
-#key_dir="${dir_path}/.."
 key_dir="."
 
 if [[ ! -d ${key_dir} ]]
@@ -71,7 +57,7 @@ identity_file="./${key_user}_${key_type}_${key_target}"
 
 set -x
 
-#-O device="${sk_device}" \
+#-O device="${sk_device}" 
 
 ssh-keygen \
 	-vvv \
@@ -81,7 +67,7 @@ ssh-keygen \
 	-f "${identity_file}"
 
 
-# ls -al "${identity_file}" "${identity_file}.pub"
+ls -al "${identity_file}.pub"
 
 date
 
@@ -90,7 +76,8 @@ cat "${identity_file}.pub"
 set +x
 
 demo_user="${story_ssh_demo_user}"
-demo_host="${story_ssh_demo_host}"
+#demo_host="${story_ssh_demo_host}"
+demo_host='localhost'
 
-printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user}  ${story_ssh_demo_host} \n\n"
+printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
 

@@ -21,7 +21,8 @@ then
 	source "$shared_config"
 fi
 
-network_interface="$network_interface"
+#network_interface='enp2s0f0'
+network_interface="story_server_network_interface" # Pffff
 
 if [ -z "$network_interface" ]
 then

@@ -12,6 +12,7 @@ shared_config="${scripts_base_dir}/shared/config"
 now=$(date +%F_%H%M%S)
 sk_type='ecdsa-sk'
 sk_type2='ed25519-sk'
+var_tmp='/var/tmp'
 
 
 if [ $# -ne 2 ]
@@ -45,7 +46,7 @@ else
 	printf "\t  type  : $key_type \n"
 fi
 
-key_dir="."
+key_dir="${var_tmp}/${me}"
 
 if [[ ! -d ${key_dir} ]]
 then
@@ -53,13 +54,16 @@ then
 	printf "${me}: created key directory (${key_dir}).\n"
 fi
 
-identity_file="./${key_user}_${key_type}_${key_target}"
+identity_file="${key_dir}/${key_user}_${key_type}_${key_target}"
+
+printf "\n${me};  **NOTE**   watch the yubi (not) FLASH... \n\n"
 
 set -x
 
 #-O device="${sk_device}" 
 
-ssh-keygen \
+#ssh-keygen from /usr/local/bin (openssh / brew)
+/usr/local/bin/ssh-keygen \
 	-vvv \
 	-t "${key_type}" \
 	-C "${key_comment}" \
@@ -67,7 +71,7 @@ ssh-keygen \
 	-f "${identity_file}"
 
 
-ls -al "${identity_file}.pub"
+ls -al "${identity_file}"*
 
 date
 
@@ -76,8 +80,8 @@ cat "${identity_file}.pub"
 set +x
 
 demo_user="${story_ssh_demo_user}"
-#demo_host="${story_ssh_demo_host}"
-demo_host='localhost'
+demo_host="${story_ssh_demo_host}"
+#demo_host='localhost'
 
-printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
+printf "\nkey available; $ /usr/local/bin/ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
 

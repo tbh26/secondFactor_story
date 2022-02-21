@@ -21,23 +21,22 @@
 
 				<section>
 					<h3>intro</h3>
-					<br />
 					<h4>why</h4>
 					<div>
 						<ul>
-							<li>nov/dec 2021 'update' on web access (security)</li>
+							<li>nov/dec 2021 'update' on several webapps</li>
 							<li>"we" enabled <a href="https://www.surf.nl/surfsecureid-beveilig-je-diensten-extra-met-multi-factorauthenticatie">SURFsecureID</a> on <em>tooling</em></li>
 								<ul>
 									<li>git (version control) <a href="https://gitlab.ic.uva.nl">gitlab</a></li>
 									<li>docs / wiki <a href="https://confluence.ic.uva.nl">confluence</a></li>
 									<li>workflow <a href="https://jira.ic.uva.nl">jira</a></li>
 								</ul>
+							<li>discussion</li>
 							<li>yubikey purchase</li>
 						</ul>
 					</div>
-					<br />
 					<h4>who</h4>
-					<div> &hellip; </div>
+					<div>colleagues, webapps and more</div>
 					<aside class="notes">
 						<!-- some private notes, view with 's' (meaning show?) -->
 						<div>just tell the story</div>
@@ -45,63 +44,23 @@
 				</section>
 
 				<section>
-					<h4>what</h4>
-					<hr />
-					<h5>story</h5>
+					<h4>what / how</h4>
+					<h5>presentation + demos (<a href="https://github.com/tbh26/secondFactor_story">github</a>)</h5>
 					<ul>
-						<li>remote access (aka login) & security</li>
+						<li>remote access(aka login), (in)secure and history</li>
 						<li>password / Two-factor authentication (2FA)</li>
-						<li>2FA focus; "otp" & "public-key cryptography" </li>
+						<li>2FA focus; "OTP" & "public-key cryptography" </li>
 						<li>circle back to yubikeys (and usage)</li>
-						<li>+- 30 minutes</li>
+						<li>+- 35 minutes  🤞</li>
 					</ul>
 				</section>
 
 				<section>
-					<h4>how</h4>
-					<hr />
-					<ul>
-						<li>presentation</li>
-						<li>some demo's (in between)</li>
-						<li>Q & A after presentation?</li>
-						<br />
-						<br />
-						<div>/* may the demo gods be with me */</div>
-					</ul>
-
-				</section>
-
-				<section data-transition="zoom">
 					<section>
-						<h4>the presentation</h4>
-						<br />
-						<div>some (hi)story</div>
-						<div>in browser "slide(s)" created with html and/or markdown</div>
-						<small>(created with reveal.js)</small>
-					</section>
-					<section>
-						<h4>slides navigation</h4>
-						<br />
-						<div>with "arrow-keys" 👨‍💻</div>
-						<br />
-						<hr />
-						<br />
-						<h4>it's a git project</h4>
-						<div><a href="https://github.com/tbh26/secondFactor_story">in github</a></div>
+						<h4>demos</h4>
 						<ul>
-							<li>presentation</li>
-							<li><em>code</em> (and/or scripts)</li>
-							<li>links and/or resources</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h4>the demo's</h4>
-						<ul>
-							<li>hands-on</li>
-							<ul>
+							<li>besides presentation, show stuff (hands-on)</li>
+							<ol>
 								<li>cli / shell (unix)</li>
 								<ul>
 									<li>terminal</li>
@@ -109,7 +68,7 @@
 								</ul>
 								<li>yubikey manager (desktop program)</li>
 								<li>browser</li>
-							</ul>
+							</ol>
 						</ul>
 						<br />
 						<aside class="notes">
@@ -118,11 +77,12 @@
 					</section>
 
 					<section>
-						<h4>cli demo setup</h4>
+						<h4>demo setup</h4>
 						<ul>
 							<li>client (os X...)</li>
 							<li>server (debian 11)</li>
-							<li>yubikeys</li>
+							<li>yubikeys & webcam</li>
+							<li>program or browser</li>
 						</ul>
 						<br />
 						<br />
@@ -137,46 +97,45 @@
 				<section>
 					<h4>the beginning</h4>
 					<ul>
-						<li>eduction (before 1995)</li>
+						<li>eduction (before work)</li>
+						<li>remote access/login</li>
 						<ul>
-							<li> &hellip; </li>
-							<li>HTS elektrotechniek (tck)</li>
-							<li>informatica VU</li>
-						</ul>
-						<li>remote access</li>
-						<ul>
-							<li>telnet, ftp</li>
-							<li>(berkley) "r" commands</li>
+							<li>telnet & ftp, secure?</li>
+							<li>(berkley) "r" commands, unix-only<small>(rlogin, rsh & rcp, trust?)</small></li>
 						</ul>
 					</ul>
 					<br />
 					<br />
-					<h6>first demos!</h6>
+					<h6>first demos (2x)</h6>
 					<aside class="notes">
 						<div>telnet, tcpdump, show "flow"</div>
-						<div>rlogin / rsh and 'trust'</div>
+						<div>rlogin / rsh / rcp and 'trust'</div>
 					</aside>
+				</section>
+
+				<section>
+					<h4>telnet dead?</h4>
+					<div>cert mail 2013</div>
+					<div>
+						<img src="./images/Screenshot%20from%202022-02-16%2000-03-16.png" alt="screenshot cert mail headers" width="1000" height="450"/>
+					</div>
 				</section>
 
 				<section>
 					<h4>work</h4>
 					<ul>
-						<li>military service -> alternative civilian service</li>
 						<li>Informatiseringcentrum UvA (dec 1995)</li>
 						<ul>
-							<li>(not yet "central")</li>
 							<li>remote access</li>
-							<li>need for more; one time passwords (otp)?</li>
-						</ul>
-						<li>system administration</li>
-						<ul>
-							<li>pre firewall, host: tcp wrappers</li>
-							<li>(network ACL was sort-of permissive)</li>
-							<li>predecessor, generated OTP serie on paper</li>
+							<li>better security needed, how?</li>
+							<li>let's go with: One Time Passwords == OTP</li>
+							<li>some effort with; "OTP on paper" solution <small>(not well received)</small></li>
 							<li>commercial solution for OTP</li>
 						</ul>
-						<div>("infra" needed for otp)</div>
 					</ul>
+					<div>
+						<img src="./images/paperOTP.png" alt="One Time Password on paper" width="600" height="300">
+					</div>
 				</section>
 
 				<section>
@@ -201,33 +160,26 @@
 					<section>
 						<h6>ftp</h6>
 						<br />
-						<div>solving a "problem"</div>
+						<div>solving a "problem" (+-1997) </div>
 						<br />
 						<ul>
-							<li>cost, maybe static password?</li>
-							<li>ftp user with restricted access (aka chroot)</li>
 							<li>custom solution, modify open source "wu-ftpd"</li>
-							<li>add functionality and "link" with securID lib</li>
+							<li>OTP functionality ("linked" with securID lib)</li>
+							<li>ftp user with restricted access (aka chroot)</li>
+							<li>software packaging</li>
 						</ul>
+						<div><small>labor intensive</small></div>
 					</section>
 
 					<section>
 						<h6>no "otp" demo</h6>
 						<ul>
-							<li>QR (mobile) apps, (otp code)</li>
-							<li>icts HvA/UvA beheer vpn</li>
 							<li>familiar (I guess)</li>
+							<li>QR (mobile) apps with otp code</li>
+							<li>icts HvA/UvA beheer vpn</li>
 						</ul>
 					</section>
 
-				</section>
-
-				<section>
-					<h4>telnet dead?</h4>
-					<div>cert mail 2013</div>
-					<div>
-						<img src="./images/Screenshot%20from%202022-02-16%2000-03-16.png" alt="screenshot cert mail headers" width="1000" height="450"/>
-					</div>
 				</section>
 
 				<section>
@@ -257,42 +209,55 @@
 					<h4>ssh</h4>
 					<ul>
 						<li>rsh -> ssh, rcp -> scp</li>
-						<li>password vs "public key"</li>
-						<li>{git: {ro: https, rw: ssh}}</li>
+						<li>password vs "public key" usage</li>
+						<li>git uses "ssh"</li>
+							<ul>
+								<li>readonly via https://</li>
+								<li>read-write with; <b>git://</b> (<- == ssh)</li>
+							</ul>
 					</ul>
 					<br>
 					<br>
-					<h6>ssh demo (3x?)</h6>
+					<h6>ssh demo (2x)</h6>
 				</section>
 
 				<section>
 					<h4>Yubikey manager</h4>
 					<br/>
+					<div>gui desktop app (linux, os X, windows)</div>
+					<br/>
 					<ul>
-						<li>gui desktop app (linux, os X, windows)</li>
+						<li>Yubi security key (blue, fido)</li>
+						<li>Yubikey 4, beheer VPN (OTP)</li>
+						<li>Yubikey 5, surfconext SecurID (OTP + fido)</li>
 					</ul>
-					<div>why "otp" and/or "public-key thing"</div>
 				</section>
 
 				<section>
-					<h4>browser & 2FA (fido)</h4>
-					<div>semi work / private accounts - (NOT work)</div>
-					<div><a href="https://account.microsoft.com/account">microsoft</a></div>
+					<h4>browser & "public key"</h4>
+					<br />
+					<div>semi work / private accounts</div>
+					<br />
+					<br />
 					<div><a href="https://myaccount.google.com/">google</a></div>
 					<div><a href="https://github.com/login">github</a></div>
+					<!--
+					<div><a href="https://account.microsoft.com/account">microsoft</a></div>
 					<div><a href="https://gitlab.com/users/sign_in">gitlab</a></div>
+					-->
 				</section>
 
 				<section>
 					<h4>surfconext / <a href="https://wiki.surfnet.nl/display/SsID/SURFsecureID">SecurID</a></h4>
 					<ul>
-						<li>vetting</li>
+						<li><a href="https://wiki.surfnet.nl/display/SsID/Inrichten+registratieproces">vetting</a></li>
 						<li><a href="https://wiki.surfnet.nl/display/SsID/Levels+of+Assurance">level of assurance</a> aka "LoA"</li>
 						<ul>
 							<li>ticker app: LoA 2</li>
 							<li>yubikey(otp): LoA 3</li>
 						</ul>
 						<li><a href="https://wiki.surfnet.nl/display/SsID/Frequently+Asked+Questions#FrequentlyAskedQuestions-Canauserregistermultipletokens?">more than one?</a></li>
+						<li>registratie HvA / <a href="https://medewerker.uva.nl/content-secured/az/tweestapsverificatie/surf/surf.html"> UvA</a></li>
 					</ul>
 				</section>
 
@@ -301,8 +266,8 @@
 					<div>after "surfconext"</div>
 					<ul>
 						<li>active/azure directory</li>
-						<li>in webapp</li>
-						<li><em>our</em> <a href="https://gitlab.ic.uva.nl">gitlab</a></li>
+						<li>in webapp, admin task</li>
+						<li>see also <em>our</em> <a href="https://gitlab.ic.uva.nl">gitlab</a> (help)</li>
 					</ul>
 				</section>
 
@@ -310,7 +275,7 @@
 					<h6>please experiment with the yubikey</h6>
 					<ul>
 						<li>try 2FA; both "otp" and "fido"</li>
-						<li>learning React, hope to build a "login"</li>
+						<li>learning React, hope to build a "fido login"</li>
 						<li>maybe don't use "static password"... (or hide it)</li>
 					</ul>
 				</section>

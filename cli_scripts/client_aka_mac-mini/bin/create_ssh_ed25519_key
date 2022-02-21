@@ -27,7 +27,8 @@ key_comment="${key_username} ${key_type} key for ${key_target} stuff"
 identity_file="./${key_username}_${key_type}_${key_target}"
 passphrase="${story_default_passphrase}"
 
-ssh-keygen \
+#ssh-keygen from os-X (in /usr/bin )
+/usr/bin/ssh-keygen \
 	-t "${key_type}" \
 	-N "${passphrase}" \
 	-C "${key_comment}" \

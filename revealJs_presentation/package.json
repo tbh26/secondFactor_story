@@ -10,7 +10,8 @@
   "scripts": {
     "test": "gulp test",
     "start": "gulp serve",
-    "build": "gulp build"
+    "build": "gulp build",
+    "rjs2presentation": "rm -rf ../presentation; sync; sync; mkdir ../presentation; cp -a ./index.html ./dist ./plugin ../presentation/"
   },
   "author": {
     "name": "Hakim El Hattab",

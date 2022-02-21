@@ -21,14 +21,16 @@ set -e
 set -x
 
 key_username="$1"
-key_type='ed25519'
+key_bits='4096'
+key_type='rsa'
 key_target='demo'
 key_comment="${key_username} ${key_type} key for ${key_target} stuff"
 identity_file="./${key_username}_${key_type}_${key_target}"
 passphrase="${story_default_passphrase}"
 
-#ssh-keygen \
+#ssh-keygen from os-X (in /usr/bin )
 /usr/bin/ssh-keygen \
+	-b "${key_bits}" \
 	-t "${key_type}" \
 	-N "${passphrase}" \
 	-C "${key_comment}" \
@@ -46,4 +48,3 @@ demo_user="${story_ssh_demo_user}"
 demo_host="${story_ssh_demo_host}"
 
 printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
-

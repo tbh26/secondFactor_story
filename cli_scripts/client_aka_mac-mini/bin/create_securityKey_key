@@ -59,7 +59,8 @@ set -x
 
 #-O device="${sk_device}" 
 
-ssh-keygen \
+#ssh-keygen \
+/usr/local/bin/ssh-keygen \
 	-vvv \
 	-t "${key_type}" \
 	-C "${key_comment}" \
@@ -76,8 +77,8 @@ cat "${identity_file}.pub"
 set +x
 
 demo_user="${story_ssh_demo_user}"
-#demo_host="${story_ssh_demo_host}"
-demo_host='localhost'
+demo_host="${story_ssh_demo_host}"
+#demo_host='localhost'
 
-printf "\nkey available; $ ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
+printf "\nkey available; $ /usr/local/bin/ssh -i ${identity_file} -l ${demo_user} ${demo_host} \n\n"
 

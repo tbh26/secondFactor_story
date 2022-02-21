@@ -11,7 +11,7 @@
     "test": "gulp test",
     "start": "gulp serve",
     "build": "gulp build",
-    "rjs2presentation": "rm -rf ../presentation; sync; sync; mkdir ../presentation; cp -a ./index.html ./dist ./plugin ../presentation/"
+    "rjs2presentation": "rm -rf ../presentation; sync; sync; mkdir ../presentation; cp -a ./index.html ./css ./dist ./images ./js ./plugin ../presentation/"
   },
   "author": {
     "name": "Hakim El Hattab",

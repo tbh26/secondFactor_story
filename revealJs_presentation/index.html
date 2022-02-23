@@ -21,6 +21,20 @@
 
 				<section>
 					<h3>intro</h3>
+					<div>
+						<ul>
+							<li>why</li>
+							<li>who</li>
+							<li>what</li>
+						</ul>
+					</div>
+					<aside class="notes">
+						<!-- some private notes, view with 's' (meaning show?) -->
+						<div>just tell the story</div>
+					</aside>
+				</section>
+
+				<section>
 					<h4>why</h4>
 					<div>
 						<ul>
@@ -35,19 +49,24 @@
 							<li>18 "yubikey 5" purchased</li>
 						</ul>
 					</div>
+				</section>
+
+				<section>
 					<h4>who</h4>
-					<div>colleagues, webapps and more</div>
-					<aside class="notes">
-						<!-- some private notes, view with 's' (meaning show?) -->
-						<div>just tell the story</div>
-					</aside>
+					<div>
+						<ul>
+							<li>webapp department</li>
+							<li>more admins & developers</li>
+							<li><i>other</i> colleagues</li>
+						</ul>
+					</div>
 				</section>
 
 				<section>
 					<h4>what / how</h4>
 					<h5>presentation + demos (<a href="https://github.com/tbh26/secondFactor_story">github</a>)</h5>
 					<ul>
-						<li>remote access(aka login), (in)secure and history</li>
+						<li>remote access(aka login) &amp; some history</li>
 						<li>Two-factor authentication (aka 2FA)</li>
 						<li>2FA focus; "OTP" & "public-key cryptography" </li>
 						<li>circle back to yubikey 5 (and usage)</li>
@@ -128,8 +147,9 @@
 					<h4>2FA</h4>
 					<ul>
 						<li>something you <b>know</b> &amp; something you <b>have</b></li>
-						<li>OTP: password + extra</li>
+						<li>OTP: password + extra factor</li>
 						<li>fido: security/private key</li>
+						<li>(also other possible)</li>
 					</ul>
 					<br />
 					<br />
@@ -205,7 +225,7 @@
 					<section>
 						<h4><i>other</i> &nbsp; track</h4>
 						<div>public-key cryptography</div>
-						<div><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">wikipedia ?</a></div>
+						<div><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">wikipedia</a></div>
 						<br />
 						<hr />
 						<br />
@@ -219,15 +239,23 @@
 						<div>
 							<img src="./images/public-key-encryption-with-signing-okta.png" alt="public private keys" width="800" height="400">
 						</div>
+						<div>also used with PGP / secure email</div>
 					</section>
 
+					<section>
+						<h4>password / passphrase</h4>
+						<ul>
+							<li>sometimes a complete password replacement</li>
+							<li>the private key protection with a passphrase</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
 					<h4>ssh</h4>
 					<ul>
-						<li>rsh -> ssh, rcp -> scp</li>
-						<li>password vs "public key" usage</li>
+						<li>successor: rsh -> ssh, rcp -> scp</li>
+						<li>password and "public key" usage</li>
 						<li>git uses "ssh"</li>
 							<ul>
 								<li>readonly via https://</li>
@@ -254,8 +282,7 @@
 				<section>
 					<h4>browser & "public key"</h4>
 					<br />
-					<div>semi work / private accounts</div>
-					<br />
+					<div>private accounts (sometimes semi work)</div>
 					<br />
 					<div><a href="https://myaccount.google.com/">google</a></div>
 					<div><a href="https://github.com/login">github</a></div>
@@ -283,8 +310,8 @@
 					<h6>alternative to "surfconext SecurID"?</h6>
 					<div>after "surfconext"</div>
 					<ul>
-						<li>active/azure directory</li>
-						<li>in webapp, admin task</li>
+						<li><a href="https://wiki.surfnet.nl/display/surfconextdev/Documentatie+voor+Identity+Providers">"IdP"</a>: directory server HvA/UvA</li>
+						<li>in the webapp (not always available)</li>
 						<li>see also <em>our</em> <a href="https://gitlab.ic.uva.nl">gitlab</a> (help)</li>
 					</ul>
 				</section>
@@ -296,6 +323,13 @@
 						<li>try 2FA; both "otp" and "fido"</li>
 						<li>learning React, hope to build a "fido login"</li>
 						<li>maybe don't use "static password"... (or hide it)</li>
+					</ul>
+					<br />
+					<br />
+					<div>Yubikey 5 modes</div>
+					<ul>
+						<li>OTP: kind of USB keyboard, short/long press</li>
+						<li>FIDO: flashing (aka security key / webauthn)</li>
 					</ul>
 				</section>
 
